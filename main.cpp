@@ -13,7 +13,7 @@ bool playGame(int Difficulty){
     printIntroduction(Difficulty);
 
    //init the number ;
-        int RewardNum = 0;
+        int RewardNum = 0 ;
         int Num1 = rand()%Difficulty + Difficulty  ;
         int Num2 = rand()%Difficulty + Difficulty  ;
         int Num3 = rand()%Difficulty + Difficulty  ;
