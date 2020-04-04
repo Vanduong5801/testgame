@@ -1,10 +1,11 @@
 #include<iostream>
+#include<ctime>
 
 void printIntroduction(int Difficulty){
     std::cout<<"Welcome to the game call : Guess the number "<<std::endl;
     std::cout<<"The rules are simple ; You will guess three number ; if you right you will advanced to the next the level "<<std::endl;
     std::cout<<"Let begin"<<std::endl;
-    std::cout<<"Your level is "<<Difficulty;
+    std::cout<<"Your level is "<<Difficulty<<std::endl;;
 }
 
 bool playGame(int Difficulty){
@@ -12,10 +13,10 @@ bool playGame(int Difficulty){
     printIntroduction(Difficulty);
 
    //init the number ;
-    int RewardNum = 0;
-    const int Num1 = 1 ;
-    const int Num2 = 8 ;
-    const int Num3 = 10 ;
+        int RewardNum = 0;
+        int Num1 = rand()%Difficulty + Difficulty  ;
+        int Num2 = rand()%Difficulty + Difficulty  ;
+        int Num3 = rand()%Difficulty + Difficulty  ;
 
     //the hints the player will guess 
     int Product = Num1 * Num2 * Num3;
@@ -39,28 +40,31 @@ bool playGame(int Difficulty){
         std::cout<<"You have been reward 1000$"<<std::endl;
         RewardNum += 1000;
         std::cout<<"Your total money are " << RewardNum<<std::endl;
-        return  true ; 
+        return true ; 
     }
     else {
         std::cout<<"You lose "<<std::endl;
-        return  false ;
+        return false ;
     }
 
 
 
 }
 int main(){
+    srand(time(NULL));
     int levelDifficulty = 1 ;
-    bool isDone = playGame(levelDifficulty);
+    int maxDifficulty = 10 ;
+   
     
-    while (true) {
-         playGame(levelDifficulty);
+    while (levelDifficulty<=maxDifficulty  ) {
+         bool isDone = playGame(levelDifficulty);
          std::cin.clear();
          std::cin.ignore();
-    if(isDone){
+    if(isDone == true){
         ++levelDifficulty;
     }
         }
+    std::cout<<"Well done you have completed the game "<<std::endl;
 
      return 0;
 }
